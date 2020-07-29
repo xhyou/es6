@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //结构表达式、
+        //对象解构
+        // let arr = [1, 2, 3];
+        // let [a, b, c] = arr;
+        // console.log(a, b, c);
+
+        //对象解构
+        const person ={
+            name:'jack',
+            age :12,
+            language:['java','js','css']
+        }
+
+        const {name,age,language}=person;
+        console.log(name,age,language);
+
+        //字符串扩展
+        let str ="hello.vue";
+        console.log(str.startsWith('hello'));
+        console.log(str.includes('vue'));
+        console.log(str.endsWith('vue'));
+
+        //字符串模板
+        let ss  =`<div>
+                   <span>hello</span>
+                 </div>`
+        console.log(ss);
+
+        function a (){
+            return 'a';
+        }
+        //插值
+        let info =`我是${name},我今年${age+10},返回的函数为${a()}`
+        console.log(info);
+    </script>
+</body>
+
+</html>
