@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person={
+            name:"jack",
+            age:21,
+            language:['java','js','css']
+        }
+
+        console.log(Object.keys(person))
+        console.log(Object.values(person))
+        console.log(Object.entries(person));
+
+        const target  ={a:1};
+        const source1 ={b:2};
+        const source2 ={c:3};
+
+        console.log(Object.assign(target,source1,source2));
+
+        const age1 =1;
+        const name1="zhangsan"
+
+        const person1={age1,name1}
+        console.log(person1);
+
+        //对象函数的简写
+        const person3={
+            name:'jack',
+            eat:function(food){
+                console.log(this.name+"在吃"+food);
+            },
+            eat1:food=>console.log(person3.name+"在吃"+food),
+            eat2(food){
+                console.log(this.name+"在吃"+food);
+            }
+        }
+
+        person3.eat("apple");
+        person3.eat1("apple");
+        person3.eat2("apple");
+
+        //对象扩展运算符
+        //深拷贝
+        let p1 = {name:"Amy",age:15}
+        let someone = {...p1};
+        console.log(someone);
+
+        //合并对象
+        let age2 = {age:15};
+        let name2={name:"Amy"};
+        let person4={...age2,...name2};
+        console.log(person4);
+        let person5 =Object.assign(age2,name2);
+        console.log(person5);
+
+
+    </script>
+</body>
+</html>

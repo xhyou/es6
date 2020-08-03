@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //map() 接收一个函数 将原数组的所有元素用这个函数处理后重新返回
+        let arr=[
+                {name:'A',age:12},
+                {name:'B',age:13},
+                {name:'C',age:14}
+            ];
+        //封住出一个新的对象
+        let newArr = arr.map(p=>({
+           name:p.name
+        }));
+        
+        //或者
+        let newArr1 = arr.map(p=>{
+           let json ={};
+           json.age = p.age;
+           json.name = p.name;
+           return json;
+        });
+        console.log(newArr1);
+
+        //filter的用法 相当于java8的filter
+        let newArr2=arr.filter(p=>p.age>13);
+        console.log(newArr2);
+        //reduce的用法
+        arr.reduce((pre,current)=>{
+             console.log(current.name);
+             newArr4.push(current.name)
+        },newArr4=[])
+        console.log(newArr4);
+    </script>
+</body>
+</html>

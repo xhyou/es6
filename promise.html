@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+
+<body>
+    <script>
+        // let promise = new Promise((resolve, reject) => {
+        //     $.ajax({
+        //         url: "/moke/user.json",
+        //         success: function (data) {
+        //             console.log(data);
+        //             resolve(data);
+        //         },
+        //         errorr: function (err) {
+        //             reject(err);
+        //         }
+        //     });
+        // });
+
+        // promise.then((data) => {
+        //     return new Promise((resovle, reject) => {
+        //         console.log(data);
+        //         $.ajax({
+        //             url: `/moke/user_course_${data.id}.json`,
+        //             success: function (data) {
+        //                 console.log(data);
+        //                 resovle(data);
+        //             }
+        //         })
+        //     }).catch((err) => {
+        //         reject(err);
+        //     })
+        // }).then((data) => {
+        //     $.ajax({
+        //         url: `/moke/course_score_${data.id}.json`,
+        //         success: function (data) {
+        //             console.log(data);
+
+        //         }
+        //     })
+        // }).catch((err) => {
+        //     console.log('查询失败', err);
+        // })
+
+         function get(url,data){
+             return new Promise((resolve,reject)=>{
+                 $.ajax({
+                     url:url,
+                     data:data,
+                     success:function(data){
+                         resolve(data);
+                     },
+                     error:function(err){
+                         reject(err);
+                     }
+                 })
+             })
+         }   
+
+         get("/moke/user.json")
+            .then(data=>{
+                console.log("用户的信息：",data);
+                return get(`/moke/user_course_${data.id}.json`)
+            }).then(data=>{
+                console.log("课程的信息:",data);
+                return get(`/moke/course_score_${data.id}.json`)
+            }).then(data=>{
+                console.log("课程的成绩为:",data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+
+    </script>
+
+</body>
+
+</html>
